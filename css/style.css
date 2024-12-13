@@ -109,6 +109,16 @@ button {
 a:hover {
     color: #DC4900;
 }
+
+.htitle{
+    font-size: 36px;
+    font-weight: 600;
+    background-image: linear-gradient(to right, #DC4900, #ec9530);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
 .box20 .title a{
     color: #fff;
 }
@@ -1336,6 +1346,11 @@ width: 50%;
 .sd-img {
     margin: 0 -80px;
 }
+
+.section {
+    padding-block: 70px
+}
+
 .section-t h2 {
 	font-size: 350px;
 	position: absolute;

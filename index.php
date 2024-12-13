@@ -19,6 +19,9 @@ $get_plan = mysqli_query($conn, $get_plan_query);
     .btn-orange {
         background: #DC4900
     }
+    .primary-color {
+        color: #191216
+    }
     </style>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,6 +39,7 @@ $get_plan = mysqli_query($conn, $get_plan_query);
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/slider.css">
 </head>
 
 <body>
@@ -88,7 +92,67 @@ $get_plan = mysqli_query($conn, $get_plan_query);
             </div>
         </section>
         <!-- slider-area-end -->
-
+        <section id="home" class="py-4 slider-area fix p-relative">
+            <div class="container">
+                <br><br>
+                <h2 class="htitle pb-4">
+                    Camping Collection
+                </h2>
+                </div>
+                <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+                <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+                <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="images/card1.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <p class="product-short-description">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="images/card2.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="images/card3.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="images/card4.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            </div>
+            
+        </section>
 
        
 
@@ -101,6 +165,7 @@ $get_plan = mysqli_query($conn, $get_plan_query);
 
     <!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/slider.js"></script>
     <script src="js/vendor/jquery-3.6.0.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
