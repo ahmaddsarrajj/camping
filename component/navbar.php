@@ -28,7 +28,7 @@
                                         <li class="has-sub">
                                             <a href="./index.php">Home</a>
                                         </li>
-                                        <li><a href="#about_us">Store</a></li>
+                                        <li><a href="#store">Store</a></li>
                                         <li class="has-sub">
                                             <a href="./plan.php">Events</a>
                                         </li>

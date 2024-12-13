@@ -92,7 +92,7 @@ $get_plan = mysqli_query($conn, $get_plan_query);
             </div>
         </section>
         <!-- slider-area-end -->
-        <section id="home" class="py-4 slider-area fix p-relative">
+        <section id="store" class="py-4 slider-area fix p-relative">
             <div class="container">
                 <br><br>
                 <h2 class="htitle pb-4">
