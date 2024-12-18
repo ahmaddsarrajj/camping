@@ -28,40 +28,30 @@
                                         <li class="has-sub">
                                             <a href="./index.php">Home</a>
                                         </li>
-                                        <li><a href="#store">Store</a></li>
+                                        <li><a href="store.php">Store</a></li>
                                         <li class="has-sub">
-                                            <a href="./plan.php">Events</a>
+                                            <a href="./events.php">Events</a>
                                         </li>
                                         <li class="has-sub">
-                                            <a href="./plan.php">About</a>
+                                            <a href="./about.php">About</a>
                                         </li>
                                         <li class="has-sub">
-                                            <a href="./plan.php">Contacts</a>
+                                            <a href="./contacts.php">Contacts</a>
                                         </li>
-                                        <?php 
-                                        if(!empty($user)) {
-                                            echo "  
-                                                <li class='has-sub'>
-                                                    <a href='./dashboard/index.php?dashboard=true'>Dashboard</a>
-                                                </li>";
-                                        }?>
+                                       
                                          
-                                        <?php 
-                                        if(!empty($_SESSION["USER"])) {
-                                            echo "  
-                                                <li class='has-sub'>
-                                                    <a href='./logic/auth/signout.php'>Logout</a>
-                                                </li>";
-                                        }?>
+                                        
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                         <div class="col-xl-2 col-lg-2 text-right d-none d-lg-block mt-30 mb-30">
                             <?php 
-                            if(empty($user)) {
+                            if(empty($_SESSION["USER"])) {
                                 echo "<a href='#' class='btn ss-btn' data-toggle='modal' data-target='#exampleModalCenterSignin'>Login
                                     </a> ";
+                            }else {
+                                echo "<a href='./logic/auth/signout.php'>Logout</a>";
                             }
                             ?>
                             </div>

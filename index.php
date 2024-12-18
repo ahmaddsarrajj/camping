@@ -1,10 +1,7 @@
 <?php
-session_start();
-include "./connection.php";
-
-// To get the plan datails
-$get_plan_query = "SELECT * FROM `plan` "; 
-$get_plan = mysqli_query($conn, $get_plan_query);
+if(!empty( $_SESSION["USER"])) {
+        $user= $_SESSION["USER"];
+    }
 
 ?>
 
