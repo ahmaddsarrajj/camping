@@ -2,10 +2,12 @@
 
     <?php
     include "./connection.php";
+    session_start();
+
     if(!empty( $_SESSION["USER"])) {
         $user= $_SESSION["USER"];
     }
-   
+
 
     ?>
     <header class="header-area header-three d-flex justify-content-center" style="background: black">
@@ -51,7 +53,7 @@
                                 echo "<a href='#' class='btn ss-btn' data-toggle='modal' data-target='#exampleModalCenterSignin'>Login
                                     </a> ";
                             }else {
-                                echo "<a href='./logic/auth/signout.php'>Logout</a>";
+                                echo "<a href='./logic/auth/signout.php' class='btn btn-danger'>Logout</a>";
                             }
                             ?>
                             </div>

@@ -46,7 +46,7 @@
         <section id="home" class="slider-area fix p-relative">
             <div class="slider-active">
                 <div class="single-slider  d-flex align-items-center"
-                    style="background-image:url(img/bg/ai.jpg); background-size: 100%; background-position: center; height: 300px">
+                    style="background-image:url(img/bg/images.jpeg); background-size: 100%; background-position: center; height: 300px">
                     <div class="container">
                         <div class="row">
                             <div class="col">

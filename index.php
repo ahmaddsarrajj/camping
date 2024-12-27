@@ -60,7 +60,7 @@ if(!empty( $_SESSION["USER"])) {
                                 <div class="slider-content s-slider-content text2">
                                     <?php if (!empty($user)) {
                                         echo "
-                                            <h3>Welcome " . $user['USERNAME'] . "</h3>
+                                            <h3>Welcome " . $user['username'] . "</h3>
                                         ";
                                     } ?>
                                     <h2 data-animation="fadeInUp" data-delay=".4s">Adventure Awaits
@@ -92,7 +92,7 @@ if(!empty( $_SESSION["USER"])) {
         <section id="store" class="py-4 slider-area fix p-relative">
             <div class="container">
                 <br><br>
-                <h2 class="htitle pb-4">
+                <h2 class="htitle text-dark pb-4">
                     Camping Collection
                 </h2>
                 </div>

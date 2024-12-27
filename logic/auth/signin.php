@@ -40,10 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($password == $row["password"]) {
                 
                 if( $row['role_id'] == 2 ) {   
+                    $_SESSION["USER"] = $row;
                     header("Location: ../../index.php");
                     exit();
 
                 } else if( $row['role_id'] == 1 ) {
+                    $_SESSION["USER"] = $row;
                     header("Location: ../../index.php");
                     exit();
                     
