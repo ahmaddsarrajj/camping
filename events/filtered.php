@@ -1,5 +1,6 @@
 <?php
 include "../connection.php";
+
 $type = $_GET['type'] ?? '';
 $search = $_GET['search'] ?? '';
 
@@ -7,10 +8,11 @@ $search = $_GET['search'] ?? '';
 $type = mysqli_real_escape_string($conn, $type);
 $search = mysqli_real_escape_string($conn, $search);
 
-// Fetch campsites filtered by type and search keyword
-$query = "SELECT name, description, location, availableSpots, image 
+// Fetch campsites filtered by type and search keyword, joined with availability table
+$query = "SELECT campsites.site_id, campsites.nightCost, campsites.name, campsites.description, campsites.location, campsites.availableSpots, campsites.image, availability.is_Availability 
           FROM campsites 
-          WHERE type = '$type' AND (name LIKE '%$search%' OR description LIKE '%$search%')";
+          LEFT JOIN availability ON campsites.site_id = availability.site_id
+          WHERE campsites.type = '$type' AND (campsites.name LIKE '%$search%' OR campsites.description LIKE '%$search%')";
 
 $result = mysqli_query($conn, $query);
 ?>
@@ -26,8 +28,8 @@ $result = mysqli_query($conn, $query);
 <body>
     <main class="filtered-page">
         <h1><?php echo ucfirst($type); ?> Campsites</h1>
-         <!-- Search Form -->
-         <form action="" method="get" class="search-form">
+        <!-- Search Form -->
+        <form action="" method="get" class="search-form">
             <input type="hidden" name="type" value="<?php echo htmlspecialchars($type); ?>">
             <input type="text" name="search" placeholder="Search campsites..." value="<?php echo htmlspecialchars($search); ?>">
             <button type="submit">Search</button>
@@ -43,7 +45,18 @@ $result = mysqli_query($conn, $query);
                         <p>{$row['description']}</p>
                         <p><strong>Location:</strong> {$row['location']}</p>
                         <p><strong>Available Spots:</strong> {$row['availableSpots']}</p>
-                    </div>";
+                        <p><strong>Night Cost:</strong> {$row['nightCost']}</p>
+                        ";
+
+                    
+                    // Check availability and display appropriate button/label
+                    if ($row['is_Availability'] == 1) {
+                        echo "<a class='button' href='./reserve.php?site_id={$row['site_id']}'>Reserve</a>";
+                    } else {
+                        echo "<span class=''>Reserved</span>";
+                    }
+
+                    echo "</div>";
                 }
             } else {
                 echo "<p>No campsites available for this type.</p>";

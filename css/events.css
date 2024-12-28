@@ -158,3 +158,32 @@ background-color: #f4f4f9;
 .search-form button:hover {
     background-color: darkorange;
 }
+
+.reserved-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: darkorange;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.reserved-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: darkorange;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: darkorange;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
