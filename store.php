@@ -1,3 +1,12 @@
+<?php
+include "./connection.php"; // Include database connection
+
+// Fetch categories from the database
+$query = "SELECT * FROM categories";
+$result = $conn->query($query);
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -9,11 +18,11 @@
         .btn-orange {
             background: #DC4900
         }
-
+        
         .primary-color {
             color: #191216
         }
-    </style>
+        </style>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
@@ -31,6 +40,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="./css/store.css">
 </head>
 
 <body>
@@ -50,7 +60,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <h2 class="text-center">Camping Collections</h2>
+                                <h2 class="text-white text-center">Camping Collections</h2>
                             </div>
                         </div>
                     </div>
@@ -58,93 +68,26 @@
             </div>
         </section>
 
-        <!-- slider collection -->
-        <section class="collection px-4">
-            <div class="d-flex flex-wrap justify-content-around">
-
-                <div class="m-4">
-
-                    <div class="product-card pt-4">
-                        <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card1.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <p class="product-short-description">a short line about the cloth..</p>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
-                        </div>
-                    </div>
-
+        <section class="cont">     
+            <div class="container">
+                <h1 class='pb-4'>Explore Categories</h1>
+                <div class="categories">
+                    <?php
+                    if($result){
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "
+                            <div class='category-card'>
+                                <h2>{$row['name']}</h2>
+                                <a href='./store/products.php?category_id={$row['category_id']}'>View Products</a>
+                            </div>";
+                        }
+                    } else {
+                        echo "<p>No categories found.</p>";
+                    }}
+                    ?>
                 </div>
-
-                <div class="m-4" >
-
-                    <div class="product-card pt-4">
-                        <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card1.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <p class="product-short-description">a short line about the cloth..</p>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
-                        </div>
-                    </div>
-
-                  
-                </div>
-
-                <div class="m-4">
-
-                    <div class="product-card pt-4">
-                        <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card1.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <p class="product-short-description">a short line about the cloth..</p>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-
-                <div class="m-4">
-                    <div class="product-card pt-4">
-                        <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card1.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <p class="product-short-description">a short line about the cloth..</p>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="m-4">
-                    <div class="product-card pt-4">
-                        <div class="product-image">
-                            <span class="discount-tag">50% off</span>
-                            <img src="images/card1.jpg" class="product-thumb" alt="">
-                            <button class="card-btn">add to wishlist</button>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-brand">brand</h2>
-                            <p class="product-short-description">a short line about the cloth..</p>
-                            <span class="price">$20</span><span class="actual-price">$40</span>
-                        </div>
-                    </div>
-                </div>
-
+            </div>
         </section>
     </main>
 </body>

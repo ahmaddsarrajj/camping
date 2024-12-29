@@ -40,7 +40,9 @@
                                         <li class="has-sub">
                                             <a href="./contacts.php">Contacts</a>
                                         </li>
-                                       
+                                        <li class="has-sub">
+                                            <a href="./store/cart.php">Cart</a>
+                                        </li>
                                          
                                         
                                     </ul>

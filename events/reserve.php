@@ -101,12 +101,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
               JOIN campsites ON reservations.site_id = campsites.site_id
               WHERE reservations.user_id = ?";  // Corrected the query to use a parameter placeholder
     
-    if($query){
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("i", $user_id); // Safely bind the user_id as an integer
-        $stmt->execute();
-        $result = $stmt->get_result();
-    }
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $user_id); // Safely bind the user_id as an integer
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
