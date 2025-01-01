@@ -1,0 +1,142 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0; /* Light Grey background for the content area */
+  color: #333; /* Default text color */
+  margin: 0;
+}
+
+h1, h2 {
+  color: #DC4900; /* Bright Red-Orange for headers */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+a {
+  color: #333; /* Default link color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #DC4900; /* Red-Orange background for the sidebar */
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.sidebar ul {
+  padding: 10px;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 10px;
+  background-color: #d04e1c; /* Slightly darker shade of the primary color for the links */
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #b43f16; /* Even darker shade on hover */
+}
+
+/* Content Styles */
+.content {
+  margin-left: 250px;
+  padding: 20px;
+  background-color: white; /* White background for content area */
+  min-height: 100vh;
+}
+
+form, table {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: white;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Fields and Buttons */
+input, textarea, button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+input[type="file"] {
+  padding: 5px;
+}
+
+button {
+  background-color: #DC4900; /* Red-Orange for buttons */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #b43f16; /* Darker red-orange on hover */
+}
+
+input[type="text"], input[type="number"], input[type="date"], textarea {
+  background-color: #f4f4f4; /* Light grey background for input fields */
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  background-color: #f9f9f9; /* Light grey background for table cells */
+}
+
+th {
+  background-color: #DC4900; /* Red-Orange for table header */
+  color: white;
+}
+
+td:hover {
+  background-color: #f1f1f1; /* Light hover effect for table rows */
+}
+
+tr:nth-child(even) td {
+  background-color: #f4f4f4; /* Alternate row background color */
+}
+
+/* Link Styles */
+.sidebar ul li a:active {
+  background-color: #b43f16; /* Darker shade when clicked */
+}

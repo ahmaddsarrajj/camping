@@ -35,8 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // User found, verify password
             $row = mysqli_fetch_assoc($result);
 
-            $_SESSION["USER"] = $row;
-
             if ($password == $row["password"]) {
                 
                 if( $row['role_id'] == 2 ) {   
@@ -46,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 } else if( $row['role_id'] == 1 ) {
                     $_SESSION["USER"] = $row;
-                    header("Location: ../../index.php");
+                    header("Location: ../../dashboard/campsite/index.php");
                     exit();
                     
                 } else {

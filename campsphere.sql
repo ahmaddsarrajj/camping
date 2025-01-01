@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2024 at 09:10 PM
+-- Generation Time: Jan 01, 2025 at 12:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -34,6 +34,16 @@ CREATE TABLE `availability` (
   `updated_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `availability`
+--
+
+INSERT INTO `availability` (`availability_id`, `site_id`, `is_Availability`, `updated_at`) VALUES
+(1, 1, 1, '2024-12-28'),
+(2, 2, 1, '2024-12-31'),
+(3, 3, 0, '2024-12-28'),
+(4, 4, 0, '2024-12-31');
+
 -- --------------------------------------------------------
 
 --
@@ -45,11 +55,21 @@ CREATE TABLE `campsites` (
   `name` varchar(60) NOT NULL,
   `description` varchar(100) NOT NULL,
   `location` varchar(255) NOT NULL,
-  `startDate` date NOT NULL,
-  `endDate` date NOT NULL,
   `availableSpots` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `nightCost` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `campsites`
+--
+
+INSERT INTO `campsites` (`site_id`, `name`, `description`, `location`, `availableSpots`, `image`, `type`, `nightCost`) VALUES
+(1, 'B1', 'bangalow', 'here', 8, '', 'bangalow', 50.00),
+(3, 't1', 'tent', 'here', 4, 'tent1.jpeg', 'tent', 2.00),
+(4, 't2', 'tent', 'there', 6, 'tent2.jpeg', 'tent', 2.00),
+(5, 'C1', 'caravan 1', 'tripoli', 3, '200.png', 'caravan', 30.00);
 
 -- --------------------------------------------------------
 
@@ -61,6 +81,14 @@ CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`category_id`, `name`) VALUES
+(1, 'category 1'),
+(2, 'category 2');
 
 -- --------------------------------------------------------
 
@@ -75,6 +103,14 @@ CREATE TABLE `include` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `include`
+--
+
+INSERT INTO `include` (`id`, `order_id`, `product_id`, `quantity`) VALUES
+(1, 6, 1, 2),
+(3, 8, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -86,9 +122,21 @@ CREATE TABLE `orders` (
   `user_id` int(11) NOT NULL,
   `orderDate` date NOT NULL,
   `totalCost` int(11) NOT NULL,
-  `status` varchar(60) NOT NULL,
-  `date` date NOT NULL
+  `status` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `user_id`, `orderDate`, `totalCost`, `status`) VALUES
+(1, 3, '2024-12-29', 6, 'delivered'),
+(2, 3, '2024-12-29', 6, 'delivered'),
+(4, 3, '2024-12-29', 4, 'Pending'),
+(5, 3, '2024-12-29', 4, 'Pending'),
+(6, 3, '2024-12-29', 4, 'Pending'),
+(7, 3, '2024-12-29', 4, 'Pending'),
+(8, 3, '2024-12-30', 2, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -103,11 +151,15 @@ CREATE TABLE `products` (
   `productDesc` varchar(60) NOT NULL,
   `stock` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `category` varchar(60) NOT NULL,
-  `category-id` int(11) NOT NULL,
-  `order-id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL
+  `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `productName`, `productPrice`, `productDesc`, `stock`, `image`, `category_id`) VALUES
+(1, 'product 1', 2, 'fsd', 1, 'card2.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -122,8 +174,17 @@ CREATE TABLE `reservations` (
   `reservationDate` date NOT NULL,
   `noOfSpots` int(11) NOT NULL,
   `totalCost` int(11) NOT NULL,
-  `status` varchar(60) NOT NULL
+  `type` varchar(60) NOT NULL,
+  `startDate` datetime NOT NULL,
+  `endDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `reservations`
+--
+
+INSERT INTO `reservations` (`reservation_id`, `user_id`, `site_id`, `reservationDate`, `noOfSpots`, `totalCost`, `type`, `startDate`, `endDate`) VALUES
+(30, 3, 3, '2024-12-28', 2, 4, 'bangalow', '2024-12-14 00:00:00', '2024-12-30 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -141,7 +202,8 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`id`, `name`) VALUES
-(1, 'admin');
+(1, 'admin'),
+(2, 'guest');
 
 -- --------------------------------------------------------
 
@@ -161,7 +223,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `role_id`) VALUES
-(3, 'ahmad', '123', 1);
+(3, 'ahmad', '123', 1),
+(9, 'test', '123', 2),
+(10, 'test', '123', 2);
 
 --
 -- Indexes for dumped tables
@@ -205,9 +269,7 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`),
-  ADD KEY `category-id` (`category-id`),
-  ADD KEY `order-id` (`order-id`),
-  ADD KEY `role_id` (`role_id`);
+  ADD KEY `category-id` (`category_id`);
 
 --
 -- Indexes for table `reservations`
@@ -238,65 +300,59 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `availability`
 --
 ALTER TABLE `availability`
-  MODIFY `availability_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `availability_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `campsites`
 --
 ALTER TABLE `campsites`
-  MODIFY `site_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `site_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `include`
 --
 ALTER TABLE `include`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `availability`
---
-ALTER TABLE `availability`
-  ADD CONSTRAINT `availability_ibfk_1` FOREIGN KEY (`availability_id`) REFERENCES `campsites` (`site_id`);
 
 --
 -- Constraints for table `include`
@@ -315,9 +371,7 @@ ALTER TABLE `orders`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category-id`) REFERENCES `categories` (`category_id`),
-  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`order-id`) REFERENCES `orders` (`order_id`),
-  ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`);
 
 --
 -- Constraints for table `reservations`
