@@ -68,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="../css/reservation.css">
 </head>
 <body>
+<?php include "../component/specificNav.php"; ?>
     <main class="reservation-page">
         <h1>Make a Reservation</h1>
 
@@ -94,14 +95,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <h2>Your Reservations</h2>
         <div class="reservations-container">
-    <?php
-    // Display user reservations
-    $query = "SELECT reservations.*, campsites.name AS campsite_name 
-              FROM reservations 
-              JOIN campsites ON reservations.site_id = campsites.site_id
-              WHERE reservations.user_id = ?";  // Corrected the query to use a parameter placeholder
-    
-    $stmt = $conn->prepare($query);
+        <?php
+// Display user reservations
+$query = "SELECT reservations.*, campsites.name AS campsite_name 
+          FROM reservations 
+          JOIN campsites ON reservations.site_id = campsites.site_id
+          WHERE reservations.user_id = ?";
+$stmt = $conn->prepare($query);
+
+if ($stmt) {
     $stmt->bind_param("i", $user_id); // Safely bind the user_id as an integer
     $stmt->execute();
     $result = $stmt->get_result();
@@ -121,7 +123,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         echo "<p>No reservations found.</p>";
     }
-    ?>
+
+    $stmt->close();
+} else {
+    echo "Error: " . $conn->error;
+}
+?>
+
 </div>
 
     </main>

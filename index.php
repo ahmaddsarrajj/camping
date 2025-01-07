@@ -88,69 +88,7 @@ if(!empty( $_SESSION["USER"])) {
 
             </div>
         </section>
-        <!-- slider-area-end -->
-        <section id="store" class="py-4 slider-area fix p-relative">
-            <div class="container">
-                <br><br>
-                <h2 class="htitle text-dark pb-4">
-                    Camping Collection
-                </h2>
-                </div>
-                <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
-                <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
-                <div class="product-container">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="images/card1.jpg" class="product-thumb" alt="">
-                        <button class="card-btn">add to wishlist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">brand</h2>
-                        <p class="product-short-description">a short line about the cloth..</p>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag">50% off</span>
-                    <img src="images/card2.jpg" class="product-thumb" alt="">
-                    <button class="card-btn">add to wishlist</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">brand</h2>
-                    <p class="product-short-description">a short line about the cloth..</p>
-                    <span class="price">$20</span><span class="actual-price">$40</span>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag">50% off</span>
-                    <img src="images/card3.jpg" class="product-thumb" alt="">
-                    <button class="card-btn">add to wishlist</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">brand</h2>
-                    <p class="product-short-description">a short line about the cloth..</p>
-                    <span class="price">$20</span><span class="actual-price">$40</span>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag">50% off</span>
-                    <img src="images/card4.jpg" class="product-thumb" alt="">
-                    <button class="card-btn">add to wishlist</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">brand</h2>
-                    <p class="product-short-description">a short line about the cloth..</p>
-                    <span class="price">$20</span><span class="actual-price">$40</span>
-                </div>
-            </div>
-            </div>
-            
-        </section>
-
+       
        
 
 

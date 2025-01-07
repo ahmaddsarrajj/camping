@@ -33,6 +33,10 @@ $categoryName = $categoryResult->fetch_assoc()['name'] ?? "Unknown";
     <link rel="stylesheet" href="../css/cart.css">
 </head>
 <body>
+
+    
+    <?php include "../component/specificNav.php"; ?>
+
     <section class="cont">
         <div class="container">
             <h1 class="pb-4">Products in "<?php echo htmlspecialchars($categoryName); ?>"</h1>

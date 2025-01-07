@@ -26,6 +26,7 @@ $result = mysqli_query($conn, $query);
     <link rel="stylesheet" href="../css/events.css">
 </head>
 <body>
+<?php include "../component/specificNav.php"; ?>
     <main class="filtered-page">
         <h1><?php echo ucfirst($type); ?> Campsites</h1>
         <!-- Search Form -->
