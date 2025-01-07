@@ -41,10 +41,10 @@ if ($cpassword === $password) {
         header("Location: ../../index.php");
         exit();
     } else {
-        echo "<script>alert('Error inserting user. Please try again later.'); window.location.href='../../register.php';</script>";
+        echo "<script>alert('Error inserting user. Please try again later.'); window.location.href='../../signup.php';</script>";
     }
 } else {
-    echo "<script>alert('Passwords do not match! Please check and try again.'); window.location.href='../../register.php';</script>";
+    echo "<script>alert('Passwords do not match! Please check and try again.'); window.location.href='../../signup.php';</script>";
 }
 
 ?>

@@ -68,7 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="../css/reservation.css">
 </head>
 <body>
-<?php include "../component/specificNav.php"; ?>
+
+<?php include "../component/backArrow.php"; ?>
     <main class="reservation-page">
         <h1>Make a Reservation</h1>
 

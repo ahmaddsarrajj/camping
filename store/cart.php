@@ -50,7 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
     <link rel="stylesheet" href="../css/cart.css">
 </head>
 <body>
-<?php include "../component/specificNav.php"; ?>
+
+<?php include "../component/backArrow.php"; ?>
 
     <h1>Your Cart</h1>
     <form method="post" action="./place_order.php">

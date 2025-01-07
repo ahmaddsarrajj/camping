@@ -35,7 +35,7 @@ $categoryName = $categoryResult->fetch_assoc()['name'] ?? "Unknown";
 <body>
 
     
-    <?php include "../component/specificNav.php"; ?>
+    <?php include "../component/backArrow.php"; ?>
 
     <section class="cont">
         <div class="container">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2025 at 12:26 PM
+-- Generation Time: Jan 07, 2025 at 09:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -39,10 +39,12 @@ CREATE TABLE `availability` (
 --
 
 INSERT INTO `availability` (`availability_id`, `site_id`, `is_Availability`, `updated_at`) VALUES
-(1, 1, 1, '2024-12-28'),
+(1, 1, 0, '2025-01-07'),
 (2, 2, 1, '2024-12-31'),
 (3, 3, 0, '2024-12-28'),
-(4, 4, 0, '2024-12-31');
+(4, 4, 0, '2024-12-31'),
+(5, 6, 1, '0000-00-00'),
+(6, 7, 1, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -69,7 +71,8 @@ INSERT INTO `campsites` (`site_id`, `name`, `description`, `location`, `availabl
 (1, 'B1', 'bangalow', 'here', 8, '', 'bangalow', 50.00),
 (3, 't1', 'tent', 'here', 4, 'tent1.jpeg', 'tent', 2.00),
 (4, 't2', 'tent', 'there', 6, 'tent2.jpeg', 'tent', 2.00),
-(5, 'C1', 'caravan 1', 'tripoli', 3, '200.png', 'caravan', 30.00);
+(5, 'C1', 'caravan 1', 'tripoli', 3, '200.png', 'caravan', 30.00),
+(6, 'l', 'kl', 'kl', 5, '../../images/uploads/200.png', 'tent', 5.00);
 
 -- --------------------------------------------------------
 
@@ -136,7 +139,8 @@ INSERT INTO `orders` (`order_id`, `user_id`, `orderDate`, `totalCost`, `status`)
 (5, 3, '2024-12-29', 4, 'Pending'),
 (6, 3, '2024-12-29', 4, 'Pending'),
 (7, 3, '2024-12-29', 4, 'Pending'),
-(8, 3, '2024-12-30', 2, 'Pending');
+(8, 3, '2024-12-30', 2, 'Pending'),
+(9, 11, '2025-01-07', 8, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -159,7 +163,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `productName`, `productPrice`, `productDesc`, `stock`, `image`, `category_id`) VALUES
-(1, 'product 1', 2, 'fsd', 1, 'card2.jpg', 1);
+(1, 'product 1', 2, 'fsd', 1, 'card2.jpg', 1),
+(7, 'p3', 45, 'ged', 4, '../../images/uploads/677d91de667fe.png', 1);
 
 -- --------------------------------------------------------
 
@@ -184,7 +189,9 @@ CREATE TABLE `reservations` (
 --
 
 INSERT INTO `reservations` (`reservation_id`, `user_id`, `site_id`, `reservationDate`, `noOfSpots`, `totalCost`, `type`, `startDate`, `endDate`) VALUES
-(30, 3, 3, '2024-12-28', 2, 4, 'bangalow', '2024-12-14 00:00:00', '2024-12-30 00:00:00');
+(30, 3, 3, '2024-12-28', 2, 4, 'bangalow', '2024-12-14 00:00:00', '2024-12-30 00:00:00'),
+(31, 11, 1, '2025-01-07', 5, 250, 'bangalow', '2025-01-09 00:00:00', '2025-01-23 00:00:00'),
+(32, 11, 1, '2025-01-07', 5, 250, 'bangalow', '2025-01-09 00:00:00', '2025-01-23 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -215,17 +222,19 @@ CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(11) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `role_id` int(11) NOT NULL
+  `role_id` int(11) NOT NULL,
+  `phone` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `role_id`) VALUES
-(3, 'ahmad', '123', 1),
-(9, 'test', '123', 2),
-(10, 'test', '123', 2);
+INSERT INTO `user` (`user_id`, `username`, `password`, `role_id`, `phone`) VALUES
+(3, 'ahmad', '123', 1, 0),
+(9, 'test', '123', 2, 0),
+(10, 'test', '123', 2, 0),
+(11, 'admin', '$2y$10$rXf4mrGijCZ0Pz8M9NjPtuOBZPG/8b/i8mIOokS7fwSET0MYhav7S', 2, 70528077);
 
 --
 -- Indexes for dumped tables
@@ -300,13 +309,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `availability`
 --
 ALTER TABLE `availability`
-  MODIFY `availability_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `availability_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `campsites`
 --
 ALTER TABLE `campsites`
-  MODIFY `site_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `site_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -324,19 +333,19 @@ ALTER TABLE `include`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -348,7 +357,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

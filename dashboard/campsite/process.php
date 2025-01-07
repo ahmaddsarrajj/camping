@@ -1,6 +1,6 @@
 <?php
 // Database connection
-include('db_connection.php');
+include('../../connection.php');
 
 // Check if the form is submitted
 if (isset($_POST['submit'])) {
@@ -32,6 +32,7 @@ if (isset($_POST['submit'])) {
     
     if (mysqli_query($conn, $availability_sql)) {
       echo "Campsite and availability record added successfully.";
+      header('location: ./index.php');
     } else {
       echo "Error adding availability record: " . mysqli_error($conn);
     }

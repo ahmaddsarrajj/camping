@@ -29,21 +29,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         }
     }
 
-    // SQL query using prepared statements for security
-    $stmt = $conn->prepare("INSERT INTO product (`productName`, `productPrice`, `productDesc`, `stock`, `image`, `category_id` 
-                            VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssdiss", $productName, $productDesc, $productPrice, $stock, $imagePath, $category_id);
+  // SQL query using prepared statements for security
+  $query = "INSERT INTO `products`(`productName`, `productPrice`, `productDesc`, `stock`, `image`, `category_id`) 
+  VALUES (?, ?, ?, ?, ?, ?)";
 
-    if ($stmt->execute()) {
-        echo "Product added successfully!";
-        // Redirect to the dashboard page after insertion
-        header('Location: ./index.php');
-        exit;
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+$stmt = $conn->prepare($query);
+$stmt->bind_param("sdsiss", $productName, $productPrice, $productDesc, $stock, $imagePath, $category_id);
 
-    $stmt->close();
-    $conn->close();
+if ($stmt->execute()) {
+echo "Product added successfully!";
+// Redirect to the dashboard page after insertion
+header('Location: ./index.php');
+exit;
+} else {
+echo "Database error: " . $conn->error;
+}
+
+// Close the statement and connection
+$stmt->close();
+$conn->close();
 }
 ?>
