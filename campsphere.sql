@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2025 at 09:45 PM
+-- Generation Time: Jan 08, 2025 at 09:22 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -70,7 +70,6 @@ CREATE TABLE `campsites` (
 INSERT INTO `campsites` (`site_id`, `name`, `description`, `location`, `availableSpots`, `image`, `type`, `nightCost`) VALUES
 (1, 'B1', 'bangalow', 'here', 8, '', 'bangalow', 50.00),
 (3, 't1', 'tent', 'here', 4, 'tent1.jpeg', 'tent', 2.00),
-(4, 't2', 'tent', 'there', 6, 'tent2.jpeg', 'tent', 2.00),
 (5, 'C1', 'caravan 1', 'tripoli', 3, '200.png', 'caravan', 30.00),
 (6, 'l', 'kl', 'kl', 5, '../../images/uploads/200.png', 'tent', 5.00);
 
@@ -163,8 +162,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `productName`, `productPrice`, `productDesc`, `stock`, `image`, `category_id`) VALUES
-(1, 'product 1', 2, 'fsd', 1, 'card2.jpg', 1),
-(7, 'p3', 45, 'ged', 4, '../../images/uploads/677d91de667fe.png', 1);
+(7, 'p3', 45, 'ged', 4, '../../images/uploads/677d91de667fe.png', 2);
 
 -- --------------------------------------------------------
 
@@ -263,8 +261,7 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `include`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `order_id` (`order_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `orders`
@@ -277,8 +274,7 @@ ALTER TABLE `orders`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`product_id`),
-  ADD KEY `category-id` (`category_id`);
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indexes for table `reservations`
@@ -367,20 +363,13 @@ ALTER TABLE `user`
 -- Constraints for table `include`
 --
 ALTER TABLE `include`
-  ADD CONSTRAINT `include_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
-  ADD CONSTRAINT `include_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+  ADD CONSTRAINT `include_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`);
 
 --
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
-
---
--- Constraints for table `products`
---
-ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`);
 
 --
 -- Constraints for table `reservations`
